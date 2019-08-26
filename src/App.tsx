@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Yubi from './components/yubi';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,14 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header>
+      <div style={{display: 'flex'}}>
+        <Yubi number={1} hand={'right'} turn={'1'} />
+        <Yubi number={1} hand={'left'} turn={'1'} />
+      </div>
+      <div style={{display: 'flex'}}>
+        <Yubi number={1} hand={'left'} turn={'0'} />
+        <Yubi number={1} hand={'right'} turn={'0'} />
+      </div>
     </div>
   );
 }

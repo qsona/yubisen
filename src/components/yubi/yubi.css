@@ -1,0 +1,11 @@
+.yubi-sente-right {
+  transform: scale(-1, 1);
+}
+
+.yubi-gote-left {
+  transform: rotate(180deg);
+}
+
+.yubi-gote-right {
+  transform: scale(1, -1);
+}
