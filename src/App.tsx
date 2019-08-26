@@ -5,18 +5,24 @@ import Yubi from './components/yubi';
 
 import { Client } from 'boardgame.io/react';
 import { Game } from 'boardgame.io/core';
-import { YubisenGame } from './Yubisen';
+import { YubisenGame, GameState } from './Yubisen';
 
-const YubiBoard: React.FC = () => {
+interface YubiBoardProps {
+  G: GameState;
+}
+
+const YubiBoard: React.FC<YubiBoardProps> = ({ G }) => {
+  const { yubis } = G;
+
   return (
     <div>
       <div style={{display: 'flex'}}>
-        <Yubi number={1} hand={'right'} turn={'1'} />
-        <Yubi number={1} hand={'left'} turn={'1'} />
+        <Yubi number={yubis['1'][1]} hand={'right'} turn={'1'} />
+        <Yubi number={yubis['1'][0]} hand={'left'} turn={'1'} />
       </div>
       <div style={{display: 'flex'}}>
-        <Yubi number={1} hand={'left'} turn={'0'} />
-        <Yubi number={1} hand={'right'} turn={'0'} />
+        <Yubi number={yubis['0'][0]} hand={'left'} turn={'0'} />
+        <Yubi number={yubis['0'][1]} hand={'right'} turn={'0'} />
       </div>
     </div>
   );

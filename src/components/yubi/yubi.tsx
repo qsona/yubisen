@@ -40,11 +40,15 @@ const Yubi: React.FC<Props> = ({ number, turn, hand }) => {
     }
   }
 
+  if (number === 0) {
+    return null;
+  }
+
   return (
     <div className={getClassName(hand === 'right', turn === '1')}>
       <img src={yubiImg} alt='yubi' />
     </div>
-  )
+  );
 }
 
 export default Yubi;
