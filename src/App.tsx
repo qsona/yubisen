@@ -30,7 +30,7 @@ const YubiBoard: React.FC<YubiBoardProps> = ({ G, ctx, moves }) => {
   const [yubiSelectState, SetYubiSelectState] = useState<YubiState>(initialYubiState)
   const { fromYubiIndex } = yubiSelectState;
 
-  const [displayGuide, ToggleDisplayGuide]  = useState<boolean>(false);
+  const [displayGuide, ToggleDisplayGuide] = useState<boolean>(false);
 
   const handleYubiClick = (hand: 0 | 1, turn: '0' | '1') => {
     if (yubis[turn][hand] === 0) {
@@ -55,17 +55,24 @@ const YubiBoard: React.FC<YubiBoardProps> = ({ G, ctx, moves }) => {
   const nextStates = calcNextStates(G, ctx.currentPlayer);
   console.log(nextStates);
 
+  const guide = (hand: 0 | 1, turn: '0' | '1') => {
+    if (!displayGuide || ctx.currentPlayer === turn || yubiSelectState.fromYubiIndex == null) {
+      return;
+    }
+    return nextStates[yubiSelectState.fromYubiIndex.hand * 2 + hand];
+  }
+
   return (
     <div>
       <div style={{ display: 'flex' }}>
         <div>
-          {displayGuide && <div>{nextStates[3]}</div>}
+          <div>{guide(1, '1')}</div>
           <Yubi number={yubis['1'][1]} hand={'right'} turn={'1'} onClick={() => handleYubiClick(1, '1')}
             className={(fromYubiIndex && fromYubiIndex.hand === 1 && fromYubiIndex.turn === '1') ? 'yubi-selected' : ''}
           />
         </div>
         <div>
-          {displayGuide && <div>{nextStates[2]}</div>}
+          <div>{guide(0, '1')}</div>
           <Yubi number={yubis['1'][0]} hand={'left'} turn={'1'} onClick={() => handleYubiClick(0, '1')}
             className={(fromYubiIndex && fromYubiIndex.hand === 0 && fromYubiIndex.turn === '1') ? 'yubi-selected' : ''}
           />
@@ -73,13 +80,13 @@ const YubiBoard: React.FC<YubiBoardProps> = ({ G, ctx, moves }) => {
       </div>
       <div style={{ display: 'flex' }}>
         <div>
-          {displayGuide && <div>{nextStates[0]}</div>}
+          <div>{guide(0, '0')}</div>
           <Yubi number={yubis['0'][0]} hand={'left'} turn={'0'} onClick={() => handleYubiClick(0, '0')}
             className={(fromYubiIndex && fromYubiIndex.hand === 0 && fromYubiIndex.turn === '0') ? 'yubi-selected' : ''}
           />
         </div>
         <div>
-          {displayGuide && <div>{nextStates[1]}</div>}
+          <div>{guide(1, '0')}</div>
           <Yubi number={yubis['0'][1]} hand={'right'} turn={'0'} onClick={() => handleYubiClick(1, '0')}
             className={(fromYubiIndex && fromYubiIndex.hand === 1 && fromYubiIndex.turn === '0') ? 'yubi-selected' : ''}
           />
