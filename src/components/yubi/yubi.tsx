@@ -10,9 +10,10 @@ export interface Props {
   turn: '0' | '1';
   hand: 'right' | 'left';
   onClick: () => void;
+  className: string;
 }
 
-const Yubi: React.FC<Props> = ({ number, turn, hand, onClick }) => {
+const Yubi: React.FC<Props> = ({ number, turn, hand, onClick, className }) => {
   let yubiImg = '';
   switch(number) {
     case 1:
@@ -46,7 +47,7 @@ const Yubi: React.FC<Props> = ({ number, turn, hand, onClick }) => {
   }
 
   return (
-    <div className={getClassName(hand === 'right', turn === '1')} onClick={onClick}>
+    <div className={`${getClassName(hand === 'right', turn === '1')} ${className}`} onClick={onClick}>
       <img src={yubiImg} alt='yubi' />
     </div>
   );
