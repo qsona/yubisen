@@ -5,9 +5,11 @@
   "dependencies": {
     "@types/jest": "24.0.18",
     "@types/node": "12.7.2",
+    "@types/power-assert": "^1.5.0",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "boardgame.io": "^0.32.1",
+    "power-assert": "^1.6.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
