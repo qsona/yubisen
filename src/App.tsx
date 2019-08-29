@@ -80,16 +80,16 @@ const YubiBoard: React.FC<YubiBoardProps> = ({ G, ctx, moves }) => {
       </div>
       <div style={{ display: 'flex' }}>
         <div>
-          <div>{guide(0, '0')}</div>
           <Yubi number={yubis['0'][0]} hand={'left'} turn={'0'} onClick={() => handleYubiClick(0, '0')}
             className={(fromYubiIndex && fromYubiIndex.hand === 0 && fromYubiIndex.turn === '0') ? 'yubi-selected' : ''}
           />
+          <div>{guide(0, '0')}</div>
         </div>
         <div>
-          <div>{guide(1, '0')}</div>
           <Yubi number={yubis['0'][1]} hand={'right'} turn={'0'} onClick={() => handleYubiClick(1, '0')}
             className={(fromYubiIndex && fromYubiIndex.hand === 1 && fromYubiIndex.turn === '0') ? 'yubi-selected' : ''}
           />
+          <div>{guide(1, '0')}</div>
         </div>
       </div>
 
